@@ -1,0 +1,74 @@
+{
+ "fixture_version": "v0",
+ "salt": "conformance-salt",
+ "provenance": {
+  "gpu": "fixture",
+  "vllm_version": "0.11.0",
+  "event_schema_version": "vllm-0.11.0-1"
+ },
+ "name": "eviction_recompute",
+ "config": {
+  "block_size": 4
+ },
+ "events": [
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "block_hash": 5,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "RemovedBlock",
+   "ts": 2.0,
+   "block_hash": 5,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 3.0,
+   "block_hash": 5,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  }
+ ],
+ "expect": {
+  "residual_tokens": 0,
+  "eviction_recompute_tokens": 4,
+  "catalog_peak_entries": 1,
+  "evicted_aged_out": 0,
+  "record_counts": {
+   "lifecycle": 1,
+   "eviction_recompute": 1
+  },
+  "records": [
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "lifecycle",
+    "reason": "evict",
+    "instance_id": "a",
+    "block_id": "4e0c59eb2c4a4147",
+    "tier": "GPU",
+    "at_ms": 2.0
+   },
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "eviction_recompute",
+    "instance_id": "a",
+    "block_id": "4e0c59eb2c4a4147",
+    "n_tokens": 4,
+    "medium": "GPU",
+    "at_ms": 3.0
+   }
+  ]
+ }
+}

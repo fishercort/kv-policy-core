@@ -1,0 +1,104 @@
+{
+ "fixture_version": "v0",
+ "salt": "conformance-salt",
+ "provenance": {
+  "gpu": "fixture",
+  "vllm_version": "0.11.0",
+  "event_schema_version": "vllm-0.11.0-1"
+ },
+ "name": "cross_instance_residual",
+ "config": {
+  "block_size": 4
+ },
+ "events": [
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "block_hash": 1,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.1,
+   "block_hash": 2,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.2,
+   "block_hash": 3,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "b",
+   "type": "StoredBlock",
+   "ts": 2.0,
+   "block_hash": 1,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "b",
+   "type": "StoredBlock",
+   "ts": 2.1,
+   "block_hash": 2,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "b",
+   "type": "StoredBlock",
+   "ts": 2.2,
+   "block_hash": 9,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  }
+ ],
+ "expect": {
+  "residual_tokens": 8,
+  "eviction_recompute_tokens": 0,
+  "catalog_peak_entries": 6,
+  "evicted_aged_out": 0,
+  "record_counts": {
+   "residual_block": 2
+  },
+  "records": [
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "residual_block",
+    "instance_id": "b",
+    "also_on_instance": "a",
+    "block_id": "dca5bed3f6434d9c",
+    "n_tokens": 4,
+    "medium": "GPU",
+    "at_ms": 2.0
+   },
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "residual_block",
+    "instance_id": "b",
+    "also_on_instance": "a",
+    "block_id": "0c9e094d0261c1a1",
+    "n_tokens": 4,
+    "medium": "GPU",
+    "at_ms": 2.1
+   }
+  ]
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "fixture_version": "v0",
+ "salt": "conformance-salt",
+ "provenance": {
+  "gpu": "fixture",
+  "vllm_version": "0.11.0",
+  "event_schema_version": "vllm-0.11.0-1"
+ },
+ "name": "lifecycle_clear",
+ "config": {
+  "block_size": 4
+ },
+ "events": [
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "block_hash": 1,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "StoredBlock",
+   "ts": 1.1,
+   "block_hash": 2,
+   "block_size": 4,
+   "parent_hash": null,
+   "medium": "GPU"
+  },
+  {
+   "source": "a",
+   "type": "ClearedAll",
+   "ts": 2.0,
+   "medium": "GPU"
+  }
+ ],
+ "expect": {
+  "residual_tokens": 0,
+  "eviction_recompute_tokens": 0,
+  "catalog_peak_entries": 2,
+  "evicted_aged_out": 0,
+  "record_counts": {
+   "lifecycle": 2
+  },
+  "records": [
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "lifecycle",
+    "reason": "clear",
+    "instance_id": "a",
+    "block_id": "dca5bed3f6434d9c",
+    "tier": "GPU",
+    "at_ms": 2.0
+   },
+   {
+    "gpu": "fixture",
+    "vllm_version": "0.11.0",
+    "event_schema_version": "vllm-0.11.0-1",
+    "kind": "lifecycle",
+    "reason": "clear",
+    "instance_id": "a",
+    "block_id": "0c9e094d0261c1a1",
+    "tier": "GPU",
+    "at_ms": 2.0
+   }
+  ]
+ }
+}
