@@ -1,0 +1,21 @@
+{
+ "adapter": "vllm-0.11.0",
+ "name": "cleared_omit_medium",
+ "source": "s1",
+ "batch": [
+  4.0,
+  [
+   [
+    "AllBlocksCleared"
+   ]
+  ],
+  0
+ ],
+ "expect": [
+  {
+   "type": "ClearedAll",
+   "ts": 4.0,
+   "medium": null
+  }
+ ]
+}

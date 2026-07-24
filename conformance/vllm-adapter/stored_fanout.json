@@ -1,0 +1,63 @@
+{
+ "adapter": "vllm-0.11.0",
+ "name": "stored_fanout",
+ "source": "s0",
+ "batch": [
+  1.0,
+  [
+   [
+    "BlockStored",
+    [
+     10,
+     11,
+     12
+    ],
+    null,
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    4,
+    null,
+    "GPU"
+   ]
+  ],
+  0
+ ],
+ "expect": [
+  {
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "medium": "GPU",
+   "block_hash": 10,
+   "parent_hash": null,
+   "block_size": 4
+  },
+  {
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "medium": "GPU",
+   "block_hash": 11,
+   "parent_hash": null,
+   "block_size": 4
+  },
+  {
+   "type": "StoredBlock",
+   "ts": 1.0,
+   "medium": "GPU",
+   "block_hash": 12,
+   "parent_hash": null,
+   "block_size": 4
+  }
+ ]
+}
