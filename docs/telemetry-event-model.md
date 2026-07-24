@@ -89,6 +89,31 @@ publisher, msgpack, verified against v0.11.0) map directly:
 - Cross-instance hash comparability requires the vLLM instances to share `PYTHONHASHSEED`
   and hash algo; the adapter records both so a consumer knows the hashes are comparable.
 
+## Conformance
+
+Two corpora under `conformance/` pin the model; any implementation (the Rust `infertap`
+Source, a future adapter) must reproduce both.
+
+- `conformance/telemetry/` pins the Compute contract: given a config and a stream of
+  normalized events, the required residual/eviction detection, catalog stats, and
+  metadata-only records.
+- `conformance/vllm-wire/` pins the vLLM decode-then-normalize path at the byte layer. Each
+  fixture carries `wire_hex`, the msgpack payload as msgspec (the encoder vLLM runs) produces
+  it, so integer-width selection, str/bin family, and omit-trailing-default are the real wire
+  choices rather than a decoder agreeing with itself. A well-formed fixture states the
+  normalized `events` a faithful decoder must emit; a malformed fixture states the fail-closed
+  `error`: which `stage` rejects it (`decode` = not valid msgpack, `normalize` = valid
+  msgpack but invalid schema, `any` = either) and a substring its message must contain. The
+  corpus header pins the vLLM and msgspec versions, so regenerating against a newer vLLM is
+  the drift signal.
+
+The vLLM adapter is two layers kept sharp: decode the payload to a value faithfully (no
+coercion, an absent optional stays absent), then normalize the value to the model (where all
+schema semantics live). The malformed rows carry hostile input as a contract: truncated and
+non-msgpack payloads fail at decode; wrong-type, wrong-arity, and unknown-tag events fail at
+normalize. Bytes-family (sha256) hashes are v1 scope; v0 fails closed on them rather than
+mis-decoding.
+
 ## Version history
 - **v0** — initial model: BlockStored / BlockRemoved / AllBlocksCleared / RequestCacheReport,
   metadata-only, prefix-chained hashes, salted egress, per-source sequencing.

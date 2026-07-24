@@ -1,0 +1,35 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "valid": [
+  "stored_fanout",
+  "stored_with_parent",
+  "removed_multi",
+  "cleared_gpu",
+  "cleared_absent_medium",
+  "medium_null_explicit",
+  "medium_absent_omitted",
+  "int_width_boundaries",
+  "empty_block_list",
+  "empty_events_batch",
+  "max_token_array",
+  "multi_event_batch",
+  "no_dp_rank"
+ ],
+ "malformed": [
+  "truncated_payload",
+  "garbage_bytes",
+  "top_level_string",
+  "events_not_array",
+  "hash_is_string",
+  "block_size_is_string",
+  "unknown_tag",
+  "event_not_array",
+  "stored_short_arity",
+  "bytes_family_hash_v1"
+ ]
+}

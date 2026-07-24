@@ -1,0 +1,18 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "truncated_payload",
+ "note": "half a valid payload; not valid msgpack",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b5374",
+ "expect": {
+  "error": {
+   "stage": "decode",
+   "contains": "msgpack"
+  }
+ }
+}

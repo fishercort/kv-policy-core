@@ -1,0 +1,24 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "medium_null_explicit",
+ "note": "BlockStored full arity with medium encoded as nil -> null, same as absent",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f7265649128c09004c0c000",
+ "expect": {
+  "events": [
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 40,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": null
+   }
+  ]
+ }
+}

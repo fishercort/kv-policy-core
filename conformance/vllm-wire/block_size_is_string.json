@@ -1,0 +1,18 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "block_size_is_string",
+ "note": "block_size is a string, not an integer",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f7265649101c090a3626967c0a347505500",
+ "expect": {
+  "error": {
+   "stage": "normalize",
+   "contains": "block_size"
+  }
+ }
+}

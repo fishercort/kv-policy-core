@@ -1,0 +1,18 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "bytes_family_hash_v1",
+ "note": "a bytes-family (sha256) hash is v1 scope; v0 fails closed rather than mis-decoding",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f72656491c4200000000000000000000000000000000000000000000000000000000000000000c09004c0a347505500",
+ "expect": {
+  "error": {
+   "stage": "any",
+   "contains": ""
+  }
+ }
+}

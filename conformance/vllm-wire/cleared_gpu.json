@@ -1,0 +1,21 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "cleared_gpu",
+ "note": "AllBlocksCleared with an explicit medium",
+ "source": "s0",
+ "wire_hex": "93cb40080000000000009192b0416c6c426c6f636b73436c6561726564a347505500",
+ "expect": {
+  "events": [
+   {
+    "type": "ClearedAll",
+    "ts": 3.0,
+    "medium": "GPU"
+   }
+  ]
+ }
+}

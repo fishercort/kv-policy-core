@@ -1,0 +1,18 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "unknown_tag",
+ "note": "an event tag outside the pinned schema is drift, not a silent skip",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009193af426c6f636b54656c65706f727465649101a347505500",
+ "expect": {
+  "error": {
+   "stage": "normalize",
+   "contains": "drift"
+  }
+ }
+}

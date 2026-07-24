@@ -1,0 +1,21 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "cleared_absent_medium",
+ "note": "AllBlocksCleared with medium omitted (omit_defaults) -> medium is null",
+ "source": "s0",
+ "wire_hex": "93cb40100000000000009191b0416c6c426c6f636b73436c656172656400",
+ "expect": {
+  "events": [
+   {
+    "type": "ClearedAll",
+    "ts": 4.0,
+    "medium": null
+   }
+  ]
+ }
+}

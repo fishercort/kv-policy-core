@@ -1,0 +1,88 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "int_width_boundaries",
+ "note": "hashes at every msgpack integer-family boundary; decode must widen faithfully, not clip",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f72656499007fcc80ce7fffffffcf0000000100000000ffd280000000cf7fffffffffffffffd38000000000000000c09004c0a347505500",
+ "expect": {
+  "events": [
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 0,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 127,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 128,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 2147483647,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 4294967296,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": -1,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": -2147483648,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 9223372036854775807,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": -9223372036854775808,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   }
+  ]
+ }
+}

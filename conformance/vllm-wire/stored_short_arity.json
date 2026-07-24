@@ -1,0 +1,18 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "stored_short_arity",
+ "note": "BlockStored missing block_size (arity too short)",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009194ab426c6f636b53746f7265649101c092010200",
+ "expect": {
+  "error": {
+   "stage": "normalize",
+   "contains": "block_size"
+  }
+ }
+}

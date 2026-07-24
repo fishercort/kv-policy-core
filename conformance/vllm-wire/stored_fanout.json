@@ -1,0 +1,40 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "stored_fanout",
+ "note": "one BlockStored, three hashes; fans out to three StoredBlock, token ids dropped",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f726564930a0b0cc09c000102030405060708090a0b04c0a347505500",
+ "expect": {
+  "events": [
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 10,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 11,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   },
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 12,
+    "parent_hash": null,
+    "block_size": 4,
+    "medium": "GPU"
+   }
+  ]
+ }
+}

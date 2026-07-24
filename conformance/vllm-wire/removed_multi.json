@@ -1,0 +1,28 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "removed_multi",
+ "note": "one BlockRemoved, two hashes; fans out to two RemovedBlock",
+ "source": "s0",
+ "wire_hex": "93cb40000000000000009193ac426c6f636b52656d6f766564921e1fa347505500",
+ "expect": {
+  "events": [
+   {
+    "type": "RemovedBlock",
+    "ts": 2.0,
+    "block_hash": 30,
+    "medium": "GPU"
+   },
+   {
+    "type": "RemovedBlock",
+    "ts": 2.0,
+    "block_hash": 31,
+    "medium": "GPU"
+   }
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "schema_version": "v0",
+ "producer": {
+  "vllm": "0.11.0",
+  "event_schema": "vllm-0.11.0-1",
+  "msgspec": "0.21.1"
+ },
+ "name": "stored_with_parent",
+ "note": "chained parent hash carried through; lora_id present but not in the normalized model",
+ "source": "s0",
+ "wire_hex": "93cb3ff00000000000009197ab426c6f636b53746f7265649114079c000102030405060708090a0b0403a347505500",
+ "expect": {
+  "events": [
+   {
+    "type": "StoredBlock",
+    "ts": 1.0,
+    "block_hash": 20,
+    "parent_hash": 7,
+    "block_size": 4,
+    "medium": "GPU"
+   }
+  ]
+ }
+}
